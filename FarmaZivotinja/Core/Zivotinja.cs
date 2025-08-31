@@ -108,13 +108,13 @@ namespace FarmaZivotinja.Core
     }
 
     
-    public class OpstaZivotinja : Zivotinja
+    public class OpcaZivotinja : Zivotinja
     {
         private readonly string _vrsta;
 
         public override string Vrsta => _vrsta;
 
-        public OpstaZivotinja(string vrsta, string ime, int dob, double tezinaKg) : base(ime, dob, tezinaKg)
+        public OpcaZivotinja(string vrsta, string ime, int dob, double tezinaKg) : base(ime, dob, tezinaKg)
         {
             _vrsta = vrsta ?? "Nepoznato";
         }
@@ -132,7 +132,7 @@ namespace FarmaZivotinja.Core
                 nameof(Kokos) or "Kokos" => new Kokos(ime, dob, tezinaKg),
                 nameof(Svinja) or "Svinja" => new Svinja(ime, dob, tezinaKg),
                 nameof(Konj) or "Konj" => new Konj(ime, dob, tezinaKg),
-                _ => new OpstaZivotinja(vrsta, ime, dob, tezinaKg)
+                _ => new OpcaZivotinja(vrsta, ime, dob, tezinaKg)
             };
         }
     }
