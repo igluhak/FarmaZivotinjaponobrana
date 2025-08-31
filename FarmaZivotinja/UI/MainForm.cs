@@ -15,6 +15,7 @@ namespace FarmaZivotinja
         private Button _btnStatistika = null!;
         private Button _btnNahrani = null!;
         private Button _btnProizvedi = null!;
+        private Button _btnObrisi = null!;
 
         private const string FilePath = "farma.json";
 
@@ -36,13 +37,15 @@ namespace FarmaZivotinja
             _btnNahrani = new Button { Text = "Nahrani sve", Left = 150, Top = 230, Width = 120 };
             _btnProizvedi = new Button { Text = "Proizvedi", Left = 290, Top = 230, Width = 120 };
             _btnStatistika = new Button { Text = "Statistika", Left = 430, Top = 230, Width = 120 };
+            _btnObrisi = new Button { Text = "Obriši životinju", Left = 10, Top = 270, Width = 150 };
 
-            Controls.AddRange(new Control[] { _lstZivotinje, _btnDodaj, _btnNahrani, _btnProizvedi, _btnStatistika });
+            Controls.AddRange(new Control[] { _lstZivotinje, _btnDodaj, _btnNahrani, _btnProizvedi, _btnStatistika, _btnObrisi });
 
             _btnDodaj.Click += BtnDodaj_Click;
             _btnNahrani.Click += BtnNahrani_Click;
             _btnProizvedi.Click += BtnProizvedi_Click;
             _btnStatistika.Click += BtnStatistika_Click;
+            _btnObrisi.Click += BtnObrisi_Click;
         }
 
         private async void UcitajPodatke()
@@ -82,13 +85,32 @@ namespace FarmaZivotinja
             _farma.Proizvodnja();
             OsvjeziPrikaz();
             var proizvodi = string.Join(", ", _farma.SkladisteProizvoda.Select(kv => $"{kv.Key}: {kv.Value}"));
-            MessageBox.Show($"Skladiste proizvoda: {proizvodi}", "Proizvodnja");
+            MessageBox.Show($"Skladište proizvoda: {proizvodi}", "Proizvodnja");
         }
 
         private void BtnStatistika_Click(object? sender, EventArgs e)
         {
             using var s = new StatistikaForm(_farma);
             s.ShowDialog();
+        }
+
+        private void BtnObrisi_Click(object? sender, EventArgs e)
+        {
+            if (_lstZivotinje.SelectedItem == null)
+            {
+                MessageBox.Show("Odaberite životinju za brisanje.", "Upozorenje");
+                return;
+            }
+
+            var index = _lstZivotinje.SelectedIndex;
+            var zivotinja = _farma.DohvatiSve().ElementAt(index);
+
+            var potvrda = MessageBox.Show($"Želite li obrisati {zivotinja.Ime}?", "Potvrda", MessageBoxButtons.YesNo);
+            if (potvrda == DialogResult.Yes)
+            {
+                _farma.Ukloni(zivotinja);
+                OsvjeziPrikaz();
+            }
         }
 
         private void OsvjeziPrikaz()
