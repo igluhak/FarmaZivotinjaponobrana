@@ -15,7 +15,7 @@ namespace FarmaZivotinja.Core
         public void Dodaj(Zivotinja zivotinja)
         {
             if (zivotinja == null)
-                throw new FarmException("Životinja ne može biti null!");
+                throw new FarmException("Životinja ne može biti bez podataka");
 
             lock (_lock)
             {
@@ -23,7 +23,7 @@ namespace FarmaZivotinja.Core
             }
         }
 
-        // Backwards-compatible wrapper koji si koristio u MainForm
+       
         internal void DodajZivotinju(Zivotinja zivotinja)
         {
             Dodaj(zivotinja);

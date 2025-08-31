@@ -15,8 +15,6 @@ namespace FarmaZivotinja.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Nemamo inheritance mapping za AnimalEntity u ovom primjeru,
-            // ostavimo jednostavnu tablicu s poljem Species.
             modelBuilder.Entity<AnimalEntity>().ToTable("Animals");
         }
     }

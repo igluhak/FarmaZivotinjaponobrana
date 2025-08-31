@@ -36,7 +36,7 @@ namespace FarmaZivotinja.Core
         public override string ToString() => Opis();
     }
 
-    // 🐄 Krava implementira IProizvodac
+   
     public class Krava : Zivotinja, IProizvodac
     {
         public override string Vrsta => nameof(Krava);
@@ -55,7 +55,7 @@ namespace FarmaZivotinja.Core
         }
     }
 
-    // 🐑 Ovca implementira IProizvodac
+    
     public class Ovca : Zivotinja, IProizvodac
     {
         public override string Vrsta => nameof(Ovca);
@@ -74,7 +74,7 @@ namespace FarmaZivotinja.Core
         }
     }
 
-    // 🐔 Kokoš implementira IProizvodac
+    
     public class Kokos : Zivotinja, IProizvodac
     {
         public override string Vrsta => nameof(Kokos);
@@ -93,21 +93,21 @@ namespace FarmaZivotinja.Core
         }
     }
 
-    // 🐖 Svinja - ne proizvodi (nije IProizvodac)
+    
     public class Svinja : Zivotinja
     {
         public override string Vrsta => nameof(Svinja);
         public Svinja(string ime, int dob, double tezinaKg) : base(ime, dob, tezinaKg) { }
     }
 
-    // 🐎 Konj - ne proizvodi (nije IProizvodac)
+    
     public class Konj : Zivotinja
     {
         public override string Vrsta => nameof(Konj);
         public Konj(string ime, int dob, double tezinaKg) : base(ime, dob, tezinaKg) { }
     }
 
-    // Opšta klasa za slučaj nepoznate vrste (čuva Vrsta iz baze)
+    
     public class OpstaZivotinja : Zivotinja
     {
         private readonly string _vrsta;
@@ -120,7 +120,7 @@ namespace FarmaZivotinja.Core
         }
     }
 
-    // Removed duplicate cases in the switch expression to fix CS8510
+    
     public static class ZivotinjaFactory
     {
         public static Zivotinja Create(string vrsta, string ime, int dob, double tezinaKg)
