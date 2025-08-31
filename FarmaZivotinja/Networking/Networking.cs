@@ -40,17 +40,4 @@ namespace FarmaZivotinja.Networking
             await stream.WriteAsync(bytes, 0, bytes.Length, ct);
         }
     }
-
-    public class FarmClient
-    {
-        public async Task<string> GetStateAsync(int port, CancellationToken ct)
-        {
-            using var client = new TcpClient();
-            await client.ConnectAsync(IPAddress.Loopback, port, ct);
-            var stream = client.GetStream();
-            var buffer = new byte[8192];
-            int read = await stream.ReadAsync(buffer, 0, buffer.Length, ct);
-            return Encoding.UTF8.GetString(buffer, 0, read);
-        }
-    }
 }

@@ -47,17 +47,6 @@ namespace FarmaZivotinja.Core
 
         public void NahraniSve()
         {
-            lock (_lock)
-            {
-                foreach (var z in Zivotinje)
-                {
-                    if (!SkladisteHrane.ContainsKey("Sijeno"))
-                        SkladisteHrane["Sijeno"] = 0;
-
-                    if (SkladisteHrane["Sijeno"] > 0)
-                        SkladisteHrane["Sijeno"]--;
-                }
-            }
         }
 
         public void Proizvodnja()
