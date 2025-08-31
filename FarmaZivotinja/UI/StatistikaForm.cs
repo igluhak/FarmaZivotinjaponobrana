@@ -26,8 +26,7 @@ namespace FarmaZivotinja
 
             var lbl = new Label
             {
-                Text = $"Ukupno životinja: {svi.Count}\n" +
-                       $"Prosječna težina: {prosjekTezine:F2} kg",
+                Text = $"Ukupno životinja: {svi.Count}\nProsječna težina: {prosjekTezine:F2} kg",
                 Dock = DockStyle.Fill,
                 TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             };

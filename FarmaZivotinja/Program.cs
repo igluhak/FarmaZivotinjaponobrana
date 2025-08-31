@@ -1,4 +1,5 @@
-using FarmaZivotinja.UI;
+using System;
+using System.Windows.Forms;
 
 namespace FarmaZivotinja
 {
@@ -7,7 +8,8 @@ namespace FarmaZivotinja
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
     }
