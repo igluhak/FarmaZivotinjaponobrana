@@ -47,7 +47,7 @@ namespace FarmaZivotinja
 
                 foreach (var a in lista)
                 {
-                    // mapiraj species u konkretnu klasu
+                    
                     var z = ZivotinjaFactory.Create(a.Species, a.Name, a.Age, a.WeightKg);
                     _farma.Dodaj(z);
                 }
