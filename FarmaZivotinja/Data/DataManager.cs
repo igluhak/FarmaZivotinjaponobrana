@@ -28,7 +28,7 @@ namespace FarmaZivotinja.Data
         }
     }
 
-    // DTO-i za serijalizaciju
+    
     public class FarmaDto
     {
         public List<ZivotinjaDto> Zivotinje { get; set; } = new();
