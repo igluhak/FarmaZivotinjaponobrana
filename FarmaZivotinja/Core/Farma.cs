@@ -9,7 +9,7 @@ namespace FarmaZivotinja.Core
         private readonly object _lock = new();
 
         public List<Zivotinja> Zivotinje { get; private set; } = new();
-        public Dictionary<string, int> SkladisteHrane { get; private set; } = new();
+        public Dictionary<string, int> SkladisteHrane { get; private set; } = new(); //koristilo se u staroj verziji
         public Dictionary<string, int> SkladisteProizvoda { get; private set; } = new();
 
         public void Dodaj(Zivotinja zivotinja)
